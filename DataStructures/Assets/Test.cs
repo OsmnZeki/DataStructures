@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using BinaryTree;
 using UnityEngine;
 
 public struct TestStruct
@@ -18,28 +19,23 @@ public struct TestStruct
 
 public class Test : MonoBehaviour
 {
+    BinaryTree<TestStruct> intBinaryTree = new BinaryTree<TestStruct>();
+    
     void Start()
     {
-        DynamicArray<TestStruct> dynamicArray = new DynamicArray<TestStruct>(4);
-
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < 5; i++)
         {
-            dynamicArray.Add(new TestStruct()
+            intBinaryTree.Add(new TestStruct()
             {
-                floatValue = i,
                 intValue = i,
+                floatValue = 1,
             });
         }
-
-        dynamicArray.RemoveAt(1);
-        
-        dynamicArray.ShowItems();
-        Debug.Log("---------------");
-        dynamicArray.ShowAll();
     }
 
     // Update is called once per frame
     void Update()
     {
+        intBinaryTree.DebugTree();
     }
 }
